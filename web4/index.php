@@ -1,5 +1,11 @@
 <?php
 // set cookies
+    if(isset($_POST['submit'])){
+
+        setcookie('auth', 'ok', time()+3600); // 1 Hour
+
+        header('Location: loggedin.php');
+    }
 
 ?>
 <html lang="en">
@@ -9,10 +15,10 @@
     <title>Set Cookie Data</title>
 </head>
 <body>
-    <form action="<?php //<code>// ?>" method="">
-    Name: <input type="text" name="username">
-    Password: <input type="text" name="password"><br/><br/>
-    <input type="submit" value="Log Me In">
+    <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+        Name: <input type="text" name="username">
+        Password: <input type="text" name="password"> <br> <br>
+        <input type="submit" name="submit" value="Log Me In">
     </form>
 </body>
 </html>
